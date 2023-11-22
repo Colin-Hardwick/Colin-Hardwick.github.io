@@ -1,1 +1,10 @@
-Test
+def introScene():
+    directions = {"Forward", "Right", "Get in Car"}
+    print("After driving for what seemed an eterntiy You have finally arrived home and have parked your car in the driveway, now to find Mom and have some dinner, which direction should I go?")
+    userInput = ""
+    while userInput not in directions:
+        print("I do not understand, Maybe I should look around?")
+        
+    
+
+
