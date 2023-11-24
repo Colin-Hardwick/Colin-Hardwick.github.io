@@ -2,7 +2,7 @@
 import random
 
 # Variable containing all the room names
-room_names = ["Driveway", "Porch", "Hallway", "Garage", "Kitchen", "LivingRoom", "Conservatory", "Garden"]
+room_name = ["Driveway", "Porch", "Hallway", "Garage", "Kitchen", "LivingRoom", "Conservatory", "Garden"]
 
 # Variable containing the description of the rooms
 room_descriptions = {
@@ -18,7 +18,7 @@ room_descriptions = {
 
 # Function to randomly choose a room from the list of rooms
 def random_room():
-    return random.choice(room_names)
+    return random.choice(room_name)
 
 # Function to get the description of a specific room
 def get_room_description(room_name):

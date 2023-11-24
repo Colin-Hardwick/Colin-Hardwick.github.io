@@ -1,51 +1,96 @@
+from cgitb import text
 import random
-from RandD import room_names
+import time
+import random
 
-#Intro
-if __name__ == "__main__":
-    while True:
-        print("Welcome to my adventure game!.")
-        print("You are a young adult driving to see their mom for dinner.")
-        print("You can control your character by typing in a direction or look for mom.")
-        print("")
-        carDrive()
+# Variable containing a list of all the room names
+room_name = ["Driveway", "Porch", "Hallway", "Garage", "Kitchen", "LivingRoom", "Conservatory", "Garden"]
+
+# Variable containing the description of each room
+room_descriptions = {
+    "Driveway": "You are on the driveway. You see the front door a head of you, a path down the right side of the house and your car.",
+    "Porch": "You are standing on the porch. You can see into the hallway in front of you, you can also look back to see the driveway and your car.",
+    "Hallway": "You are standing in the hallway, behind you is the porch, to your left is the living room, to your right is the garage and infront of you is the kitchen.",
+    "Garage": "You are standing in the garage, it smells of petrol and oil, a head of you is the kitchen, to your left is the hallway.",
+    "Kitchen": "You are standing in the kitchen, food is cooking on the stove and it smells delisious, Infront of you is the conservatory, to your left is the hallway, behind you is the garage and to your right is the garden.",
+    "LivingRoom": "You are standing in the living room, the TV is on and showing the news, it smells of old news papers, To your right is the conservatory and behind you is the hallway.",
+    "Conservatory": "You are standing in the concervatory, it is warm and you see a table set out ready for dinner, to your right is the kitchen and in front of you is the garden.",
+    "Garden": "You are standing in the garden, it is full of lovely flowers and you smell freshly cut grass.",
+}
+
+#This function randomly picks a room
+def target_room():
+    mom_room = random.choice(room_name) 
+    return mom_room
+
+# Function to get the description of the specific room the player has entered
+def get_room_description(room_name):
+    if room_name in room_descriptions:
+        return room_descriptions[room_name]
+    else:
+        return f"We do not have that room: {room_name}"
+
+
+
+
+
+
+
+
+
+
+
+
+#Game Intro
+#This slows down the text speed per line based on the Print Function
+for line in text.splitlines():
+    print(line)
+    time.sleep(1.0)
+
+print("Welcome to my adventure game!.")
+print("You are a young adult driving to see their mom for dinner.")
+print("You can control your character by typing in a direction or look for mom.")
+print("")
+print("??: Ouch! my head hurts, I shouldnt have had so many drinks last night, I can barely remember my name!")
+print("??: What was it again?")
+name = input()
+print("?? :Ah yes!" +name+ "That was it.")
+
 
 #carDrive
 def carDrive():
-        print("Ouch! my head hurts, I shouldnt have had so many drinks last night, I can barely remember my name!")
-        print("What was it again?")
-        name = input()
-        print("Ah yes!" +name+ "That was it.")
-        print(+name+ "After driving for what seemed an eterntiy You have finally arrived and parked your car in the driveway,")
+        print("After driving for what seemed an eterntiy You have finally arrived and parked your car in the driveway,")
         driveWay()
 
 #Start of the game (Driveway)
 def driveWay():
     directions = {"Forward", "Right", "Get in Car", "Look for Mom", "Look around"}
-    print(+name+ ": I am in the driveway, I should find Mom and have some dinner.")
+    print(name + ": I am in the driveway, I should find Mom and have some dinner.")
     userInput = ""
     while userInput not in directions:
         print("Where should I go?")
         userInput = input()
-        if userInput == "Look around", "look around"
+        if userInput == "Look around":
             dLookAround()
-        elif userInput == "Forward", "forward"
+        elif userInput == "Forward":
             Porch()
-        elif userInput == "Right", "right"
+        elif userInput == "Right":
             sidePath()
-        elif userInput == "Get in car", "get in car"
+        elif userInput == "Get in car":
             getInCar()
         else:
             print("I do not understand")
 
 def dLookAround(): 
-        print(+name+ ": I can see the front door ahead of me, there is also a side path around the house to the right and there is also my car next to me.")
+        print(name+ ": I can see the front door ahead of me, there is also a side path around the house to the right and there is also my car next to me.")
         driveWay()
 def getInCar():
         print("You decide to get back in the car and drive home for reasons you have yet to understand")
         userInput = ""
         quit()
-def    
+def Porch(random_room):
+        print(get_room_description)
+   
     
 
 
