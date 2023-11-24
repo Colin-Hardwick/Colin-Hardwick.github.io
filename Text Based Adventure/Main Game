@@ -1,6 +1,5 @@
-import advlib
 import random
-import RandD
+from RandD import room_names
 
 #Intro
 if __name__ == "__main__":

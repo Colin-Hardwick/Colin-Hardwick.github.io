@@ -1,14 +1,28 @@
+#A file containing the random mom location and the room description
 import random
 
-rooms = ("Driveway", "Porch", "Hallway", "Garage", "Kitchen", "LivingRoom", "Conservatory", "Garden")
+# Variable containing all the room names
+room_names = ["Driveway", "Porch", "Hallway", "Garage", "Kitchen", "LivingRoom", "Conservatory", "Garden"]
 
-room_description = {
+# Variable containing the description of the rooms
+room_descriptions = {
     "Driveway": "You are on the driveway. You see the front door a head of you, a path down the right side of the house and your car.",
     "Porch": "You are standing on the porch. You can see into the hallway in front of you, you can also look back to see the driveway and your car.",
     "Hallway": "You are standing in the hallway, behind you is the porch, to your left is the living room, to your right is the garage and infront of you is the kitchen.",
-    "Garage" : "You are standing in the garage, it smells of petrol and oil, a head of you is the kitchen, to your left is the hallway.",
+    "Garage": "You are standing in the garage, it smells of petrol and oil, a head of you is the kitchen, to your left is the hallway.",
     "Kitchen": "You are standing in the kitchen, food is cooking on the stove and it smells delisious, Infront of you is the conservatory, to your left is the hallway, behind you is the garage and to your right is the garden.",
-    "Living Room" : "You are standing in the living room, the TV is on and showing the news, it smells of old news papers, To your right is the conservatory and behind you is the hallway.", 
-    "Conservatory" : "You are standing in the concervatory, it is warm and you see a table set out ready for dinner, to your right is the kitchen and in front of you is the garden.",
-    "Garden" : "You are standing in the garden, it is full of lovely flowers"
+    "Living Room": "You are standing in the living room, the TV is on and showing the news, it smells of old news papers, To your right is the conservatory and behind you is the hallway.",
+    "Conservatory": "You are standing in the concervatory, it is warm and you see a table set out ready for dinner, to your right is the kitchen and in front of you is the garden.",
+    "Garden": "You are standing in the garden, it is full of lovely flowers and you smell freshly cut grass.",
 }
+
+# Function to randomly choose a room from the list of rooms
+def random_room():
+    return random.choice(room_names)
+
+# Function to get the description of a specific room
+def get_room_description(room_name):
+    if room_name in room_descriptions:
+        return room_descriptions[room_name]
+    else:
+        return f"No description found for room: {room_name}"
