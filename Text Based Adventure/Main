@@ -1,3 +1,4 @@
+from ast import Global
 import random
 
 #### Global Setup ####
@@ -9,54 +10,299 @@ def Intro():
     print("Welcome to my first adventure game!.")
     print("You are a young adult driving to see their mom for dinner.")
     print("You can control your character by typing in a direction or look around for mom.")
+    print("")
+    carDrive()
 
 def carDrive():
         print("After driving for what seemed an eterntiy You have finally arrived and parked your car in the driveway,")
         driveWay()
 
 def driveWay():
-    directions = {"Forward", "Right", "Get in Car", "Look for Mom", "Look around"}
-    print(name + ": I am in the driveway, I should find Mom and have some dinner.")
+    global current_room
+    global name
+    current_room = "Driveway"
+    print(name + ": I should find Mom and have some dinner.")
+    driveWayloop()
+    
+def driveWayloop(): 
+    global current_room
+    current_room = "Driveway"
+    global name
     userInput = ""
+    directions = {"Forward", "Left", "Get in Car", "Look for Mom", "Look around", "Right", "Back"}
     while userInput not in directions:
-        print(name+ ":Where should I go?")
+        print("")
+        print(name+ ": Where should I go? (Look around, Look for mom, Forward, Right)")
         userInput = input()
-        if userInput == "Look around":
-            dLookAround()
-        elif userInput == "Forward":
+        if userInput == "look around":
+            lookAround()
+        elif userInput == "look for mom":
+            Look_for_Mom()
+        elif userInput == "forward":
             Porch()
-        elif userInput == "Right":
-            sidePath()
-        elif userInput == "Get in car":
+        elif userInput == "right":
+            back_Garden()
+        elif userInput == "get in car":
             getInCar()
         else:
-            print("I do not understand")
-
-def dLookAround(): 
-    current_room = room_name
-    print(room_descriptions)
-    driveWay()
+            print("I can not go that way")
+    
     
 def getInCar():
-    print("You decide to get back in the car and drive home for reasons you have yet to understand")
-    userInput = ""
+    print("You decide to get back in the car and drive home")
+    userInput = "Game Over, Ending 2 of 2 (Mum's food sucks)"
+    print(userInput)
     quit()
     
 def Porch():
-    print(get_room_description)
+    global current_room
+    current_room = "Porch"
+    global name
+    print("You are standing on the Porch of the house")
+    userInput = ""
+    directions = {"Forward", "Left", "Get in Car", "Look for Mom", "Look around", "Right", "Back"} 
+    while userInput not in directions:
+        print("")
+        print(name+ ": Where should I go? (Look around, Look for mom, Forward, Back)")
+        userInput = input()
+        if userInput == "look around":
+            lookAround()
+        elif userInput == "look for mom":
+            Look_for_Mom()
+        elif userInput == "forward":
+            Hallway()
+        elif userInput == "back":
+            driveWay()
+        else:
+            print("I can not go that way")
+       
+def back_Garden():
+    global current_room
+    current_room = "Garden"
+    global name
+    print("You are in the Back Garden")
+    userInput = ""
+    directions = {"Forward", "Left", "Get in Car", "Look for Mom", "Look around", "Right", "Back"}
+    while userInput not in directions:
+        print("")
+        print(name+ ": Where should I go? (Look around, Look for mom, Forward, Left)")
+        userInput = input()
+        if userInput == "look around":
+            lookAround()
+        elif userInput == "look for mom":
+            Look_for_Mom()
+        elif userInput == "forward":
+            Conservatory()
+        elif userInput == "left":
+            Kitchen()
+        else:
+            print("I can not go that way")
+        
+def Hallway():
+    global current_room
+    current_room = "Hallway"
+    global name
+    print("You are in the Hallway")
+    userInput = ""
+    directions = {"Forward", "Left", "Get in Car", "Look for Mom", "Look around", "Right", "Back"}
+    while userInput not in directions:
+        print("")
+        print(name+ ": Where should I go? (Look around, Look for mom, Forward, Left, Right, Back)")
+        userInput = input()
+        if userInput == "look around":
+            lookAround()
+        elif userInput == "look for mom":
+            Look_for_Mom()
+        elif userInput == "forward":
+            Kitchen()
+        elif userInput == "left":
+            living_Room()
+        elif userInput == "right":
+            Garage()
+        elif userInput == "back":
+            Porch()
+        else:
+            print("I can not go that way")
+
+def Garage():
+    global current_room
+    current_room = "Garage"
+    global name
+    print("You are in the Garage")
+    userInput = ""
+    directions = {"Forward", "Left", "Get in Car", "Look for Mom", "Look around", "Right", "Back"}
+    while userInput not in directions:
+        print("")
+        print(name+ ": Where should I go? (Look around, Look for mom, Forward, Back)")
+        userInput = input()
+        if userInput == "look around":
+            lookAround()
+        elif userInput == "look for mom":
+            Look_for_Mom()
+        elif userInput == "forward":
+            Kitchen()
+        elif userInput == "back":
+            Hallway()
+        else:
+            print("I can not go that way")
+
+def living_Room():
+    global current_room
+    current_room = "LivingRoom"
+    global name
+    print("You are standing in the living room")
+    userInput = ""
+    directions = {"Forward", "Left", "Get in Car", "Look for Mom", "Look around", "Right", "Back"}
+    while userInput not in directions:
+        print("")
+        print(name+ ": Where should I go? (Look around, Look for mom, Forward, Left, Right, Back)")
+        userInput = input()
+        if userInput == "look around":
+            lookAround()
+        elif userInput == "look for mom":
+            Look_for_Mom()
+        elif userInput == "forward":
+            Conservatory()
+        elif userInput == "back":
+            Hallway()
+        else:
+            print("I can not go that way")
+def Kitchen():
+    global current_room
+    current_room = "Kitchen"
+    global name
+    print(get_room_description("Kitchen"))
+    userInput = ""
+    directions = {"Forward", "Left", "Get in Car", "Look for Mom", "Look around", "Right", "Back"}
+    while userInput not in directions:
+        print("")
+        print(name+ ": Where should I go? (Look around, Look for mom, Forward, Left, Right, Back)")
+        userInput = input()
+        if userInput == "look around":
+            lookAround()
+        elif userInput == "look for mom":
+            Look_for_Mom()
+        elif userInput == "forward":
+            back_Garden()
+        elif userInput == "left":
+            Conservatory()
+        elif userInput == "right":
+            Garage()
+        elif userInput == "back":
+            Hallway()
+        else:
+            print("I can not go that way")
+            
+def Conservatory():
+    global current_room
+    current_room = "Conservatory"
+    global name
+    print("You are standing in the conservatory")
+    userInput = ""
+    directions = {"Forward", "Left", "Get in Car", "Look for Mom", "Look around", "Right", "Back"}
+    while userInput not in directions:
+        print("")
+        print(name+ ": Where should I go? (Look around, Look for mom, Forward, Right, Back)")
+        userInput = input()
+        if userInput == "look around":
+            lookAround()
+        elif userInput == "look for mom":
+            Look_for_Mom()
+        elif userInput == "forward":
+            back_Garden()
+        elif userInput == "right":
+            Kitchen()
+        elif userInput == "back":
+            living_Room()
+        else:
+            print("I can not go that way")
+
+def previous_Room():
+    global current_room
+    userInput = "" 
+    if current_room == "Driveway":
+        driveWayloop()
+    elif current_room == "Garden":
+        back_Garden()
+    elif current_room == "Hallway":
+        Hallway()
+    elif current_room == "Garage":
+        Garage()
+    elif current_room == "Porch":
+        Porch() 
+    elif current_room == "LivingRoom":
+        living_Room() 
+    elif current_room == "Kitchen":
+        Kitchen()
+    elif current_room == "Conservatory":
+        Conservatory()     
+
+def lookAround():
+    global current_room
+    global room_name
+    global get_room_description
+    global previous_Room
+    room_description = get_room_description(current_room)
+    print(room_description)
+    previous_Room()   
+  
+def Look_for_Mom():
+    global mom_found
+    global current_room
+    global mom_presence
     
-def sidePath():
-    print(get_room_description)
+    if isinstance(current_room, list):
+        if any(room in mom_presence for room in current_room):
+            mom_found = True
+            print("Well done! You Found Mom! Time for Dinner.")
+            print("Game Over, Ending 1 of 2")
+            exit()
+    else:
+        if mom_presence.get(current_room):
+            mom_found = True
+            print("Well done! You Found Mom! Time for Dinner.")
+            print("Game Over, Ending 1 of 2")
+            exit()
+        else:
+            print("Mom is not here")
+            previous_Room()
+           
+        
+  
+#def Look_for_Mom():
+ #   global mom_found
+ #   global current_room
+  #  global mom_presence
+
+  #  if mom_presence.get(current_room):
+ #       mom_found = True
+ #       print("Congratulations! You found Mom!")
+ ##       exit()
+  #  else:
+ #       print("Mom is not here.")
+ #       previous_Room()
+    
+#def target_room():
+#    global mom_Room
+#    mom_Room = random.choice(room_name)
+#    if isinstance(current_room, list):
+#       for room in current_room:
+#           mom_presence[room] = True
+#    else:
+#        mom_presence[mom_Room = True]
+ #   return mom_Room
 
 #This function randomly picks a room for mom.
 def target_room():
-    mom_Room = random.choice(room_name) 
+    mom_Room = random.choice(room_name)
+    mom_presence[mom_Room] = True 
     return mom_Room
 
 # Function to get the description of the specific room the player has entered (it was easier to call the descriptions from a variable then it was to write them out in each section reducing the amount of lines needed in the code)
 def get_room_description(room_name):
+    global room_descriptions
     if room_name in room_descriptions:
-        return room_descriptions[room_name]
+        return room_descriptions.get(room_name)
     else:
         return f"We do not have that room: {room_name}"
 
@@ -68,25 +314,39 @@ room_name = ["Driveway", "Porch", "Hallway", "Garage", "Kitchen", "LivingRoom", 
 # Variable containing the description of each room.
 room_descriptions = {
     "Driveway": "You are on the driveway. You see the front door a head of you, a path down the right side of the house and your car.",
-    "Porch": "You are standing on the porch. You can see into the hallway in front of you, you can also look back to see the driveway and your car.",
-    "Hallway": "You are standing in the hallway, behind you is the porch, to your left is the living room, to your right is the garage and infront of you is the kitchen.",
-    "Garage": "You are standing in the garage, it smells of petrol and oil, a head of you is the kitchen, to your left is the hallway.",
-    "Kitchen": "You are standing in the kitchen, food is cooking on the stove and it smells delisious, Infront of you is the conservatory, to your left is the hallway, behind you is the garage and to your right is the garden.",
-    "LivingRoom": "You are standing in the living room, the TV is on and showing the news, it smells of old news papers, To your right is the conservatory and behind you is the hallway.",
-    "Conservatory": "You are standing in the concervatory, it is warm and you see a table set out ready for dinner, to your right is the kitchen and in front of you is the garden.",
-    "Garden": "You are standing in the garden, it is full of lovely flowers and you smell freshly cut grass.",
+    "Porch" :"You are standing on the porch. You can see into the hallway in front of you, you can also look back to see the driveway and your car.",
+    "Hallway" :"You are standing in the hallway, behind you is the porch, to your left is the living room, to your right is the garage and infront of you is the kitchen.",
+    "Garage" :"You are standing in the garage, it smells of petrol and oil, a head of you is the kitchen, to your left is the hallway.",
+    "Kitchen" :"You are standing in the kitchen, food is cooking on the stove and it smells delisious, Infront of you is the conservatory, to your left is the hallway, behind you is the garage and to your right is the garden.",
+    "LivingRoom" :"You are standing in the living room, the TV is on and showing the news, it smells of old news papers, To your right is the conservatory and behind you is the hallway.",
+    "Conservatory" :"You are standing in the concervatory, it is warm and you see a table set out ready for dinner, to your right is the kitchen and in front of you is the garden.",
+    "Garden" :"You are standing in the back garden, it is full of lovely flowers and you smell freshly cut grass.",
+}
+mom_presence = {
+    "Driveway": False,
+    "Porch": False,
+    "Hallway": False,
+    "Garage": False,
+    "Kitchen": False,
+    "LivingRoom": False,
+    "Conservatory": False,
+    "Garden": False,
 }
 #Picks a random room to put mom in.
 mom_Room = target_room()
 #states your current room
 current_room = room_name
+#States the previous room the player was in
+previousroom = current_room
 #If mom has been found
 mom_found = False
 #Your name
 name = input("Welcome! What is your name?" )
 
-def startgame():
-    if
+#Start Game
+Intro()
+
+ 
 
     
 
