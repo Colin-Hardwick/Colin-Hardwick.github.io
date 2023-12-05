@@ -4,8 +4,6 @@ import random
 #### Global Setup ####
 
 #Functions:
-##### Game Intro #####
-
 def Intro():
     print("Welcome to my first adventure game!.")
     print("You are a young adult driving to see their mom for dinner.")
@@ -16,7 +14,8 @@ def Intro():
 def carDrive():
         print("After driving for what seemed an eterntiy You have finally arrived and parked your car in the driveway,")
         driveWay()
-
+        
+#List of functions controling each room:
 def driveWay():
     global current_room
     global name
@@ -46,8 +45,7 @@ def driveWayloop():
             getInCar()
         else:
             print("I can not go that way")
-    
-    
+
 def getInCar():
     print("You decide to get back in the car and drive home")
     userInput = "Game Over, Ending 2 of 2 (Mum's food sucks)"
@@ -217,6 +215,9 @@ def Conservatory():
         else:
             print("I can not go that way")
 
+# Other Functions:
+
+#This function returns the player to the previous room.
 def previous_Room():
     global current_room
     userInput = "" 
@@ -237,6 +238,7 @@ def previous_Room():
     elif current_room == "Conservatory":
         Conservatory()     
 
+#This function allows the player to return a description of the room they are in.
 def lookAround():
     global current_room
     global room_name
@@ -245,7 +247,8 @@ def lookAround():
     room_description = get_room_description(current_room)
     print(room_description)
     previous_Room()   
-  
+
+#This function checks to see if mom is in the same room as the player.  
 def Look_for_Mom():
     global mom_found
     global current_room
@@ -266,39 +269,14 @@ def Look_for_Mom():
         else:
             print("Mom is not here")
             previous_Room()
-           
-        
-  
-#def Look_for_Mom():
- #   global mom_found
- #   global current_room
-  #  global mom_presence
 
-  #  if mom_presence.get(current_room):
- #       mom_found = True
- #       print("Congratulations! You found Mom!")
- ##       exit()
-  #  else:
- #       print("Mom is not here.")
- #       previous_Room()
-    
-#def target_room():
-#    global mom_Room
-#    mom_Room = random.choice(room_name)
-#    if isinstance(current_room, list):
-#       for room in current_room:
-#           mom_presence[room] = True
-#    else:
-#        mom_presence[mom_Room = True]
- #   return mom_Room
-
-#This function randomly picks a room for mom.
+# This function randomly picks a room for mom.
 def target_room():
     mom_Room = random.choice(room_name)
     mom_presence[mom_Room] = True 
     return mom_Room
 
-# Function to get the description of the specific room the player has entered (it was easier to call the descriptions from a variable then it was to write them out in each section reducing the amount of lines needed in the code)
+# This function is to get the description of the room the player is in
 def get_room_description(room_name):
     global room_descriptions
     if room_name in room_descriptions:
@@ -322,6 +300,7 @@ room_descriptions = {
     "Conservatory" :"You are standing in the concervatory, it is warm and you see a table set out ready for dinner, to your right is the kitchen and in front of you is the garden.",
     "Garden" :"You are standing in the back garden, it is full of lovely flowers and you smell freshly cut grass.",
 }
+# Variable list to allow the Target_Room function to randomly pick a room for Mom.
 mom_presence = {
     "Driveway": False,
     "Porch": False,
@@ -332,13 +311,13 @@ mom_presence = {
     "Conservatory": False,
     "Garden": False,
 }
-#Picks a random room to put mom in.
+# Variable that stores the chosen room.
 mom_Room = target_room()
 #states your current room
 current_room = room_name
 #States the previous room the player was in
 previousroom = current_room
-#If mom has been found
+# Variable for players to find mom
 mom_found = False
 #Your name
 name = input("Welcome! What is your name?" )
