@@ -169,7 +169,7 @@ def Kitchen():
     global current_room
     current_room = "Kitchen"
     global name
-    print(get_room_description("Kitchen"))
+    print("You are standing in the kitchen")
     userInput = ""
     directions = {"Forward", "Left", "Get in Car", "Look for Mom", "Look around", "Right", "Back"}
     while userInput not in directions:
